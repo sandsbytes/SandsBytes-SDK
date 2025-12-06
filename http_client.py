@@ -189,6 +189,7 @@ class HTTPClient:
         data = kwargs.get('data', {})
         json_data = kwargs.get('json', {})
         headers = kwargs.get('headers', {})
+        files = kwargs.get('files', {})
         
         # Add headers to session
         if headers:
@@ -204,11 +205,11 @@ class HTTPClient:
                 if http_method.upper() == 'GET':
                     response = self.session.get(url, params=params)
                 elif http_method.upper() == 'POST':
-                    response = self.session.post(url, params=params, data=data, json=json_data)
+                    response = self.session.post(url, params=params, data=data, json=json_data, files=files)
                 elif http_method.upper() == 'PUT':
-                    response = self.session.put(url, params=params, data=data, json=json_data)
+                    response = self.session.put(url, params=params, data=data, json=json_data, files=files)
                 elif http_method.upper() == 'PATCH':
-                    response = self.session.patch(url, params=params, data=data, json=json_data)
+                    response = self.session.patch(url, params=params, data=data, json=json_data, files=files)
                 elif http_method.upper() == 'DELETE':
                     response = self.session.delete(url, params=params)
                 else:
